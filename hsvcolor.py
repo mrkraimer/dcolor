@@ -9,7 +9,7 @@ class DColor:
     def __init__(self, samples=1000, xmin=-8, xmax=8, ymin=-8, ymax=8):
         mpl.rcParams['toolbar'] = 'None'
         self._samples = samples
-        #axes
+        # axes
         self._xmin = xmin
         self._xmax = xmax
         self._ymin = ymin
@@ -24,7 +24,7 @@ class DColor:
 
     def makeColorModel(self, zz):
         """Create the HSV color model for the function domain that will be plotted"""
-        h = self.normalize(np.angle(zz) % (2. * np.pi)) #Hue determined by arg(z)
+        h = self.normalize(np.angle(zz) % (2. * np.pi)) # Hue determined by arg(z)
         r = np.log2(1. + np.abs(zz))
         s = (1. + np.abs(np.sin(2. * np.pi * r))) / 2.
         v = (1. + np.abs(np.cos(2. * np.pi * r))) / 2.
@@ -78,8 +78,6 @@ class DColor:
 
         return rgb
 
-
-
     def normalize(self, arr):
         """Used for normalizing data in array based on min/max values"""
         arrMin = np.min(arr)
@@ -107,7 +105,7 @@ class DColor:
         zz=f(self.z(self.xx,self.yy))
         image = self.makeColorModel(zz)
         ax.imshow(image)
-        ax.invert_yaxis() #make CCW orientation positive
+        ax.invert_yaxis() # make CCW orientation positive
         ax.get_xaxis().set_visible(True)
         ax.get_yaxis().set_visible(True)
         ax.set_title(title)
@@ -118,4 +116,3 @@ class DColor:
             If inputs are arrays, then it returns an array with corresponding x_j+iy_j values
         """
         return x+1j*y
-
