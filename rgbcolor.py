@@ -52,7 +52,7 @@ class DColor:
         val = val + str(self._ymin) + " xmax=" + str(self._ymax)
         ax.set_ylabel(val)
         ax.imshow(rgb)
-        ax.invert_yaxis() #make CCW orientation positive
+        ax.invert_yaxis() # make CCW orientation positive
         ax.get_xaxis().set_visible(True)
         ax.get_yaxis().set_visible(True)
         ax.set_title(title)
